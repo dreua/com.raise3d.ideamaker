@@ -1,0 +1,35 @@
+id: com.raise3d.ideamaker
+runtime: org.gnome.Platform # maybe switch to freedesktop
+
+runtime-version: '45'
+
+sdk: org.gnome.Sdk
+command: ideaMaker
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --filesystem=~/cad # use flatseal or whatever
+
+modules:
+  - name: ideamaker
+    buildsystem: simple
+    build-commands:
+      - chmod +x ideaMaker*.AppImage
+      - ./ideaMaker*.AppImage --appimage-extract
+      - mv squashfs-root /app/bin/ideaMaker
+    sources:
+      - url: https://download.raise3d.com/ideamaker/release/4.3.3/ideaMaker-4.3.3.6560.glibc2.15-x86_64.AppImage
+        commit: 448bf8065c0014fc77dd96d57bd0a1f34e185e46
+        type: file
+
+
+cleanup:
+
+
+# https://github.com/flathub/com.github.jeromerobert.pdfarranger/wiki/Release-Handbook-for-Fedora-and-Flathub
+
+#flatpak-builder --repo=repo --force-clean build-dir/ com.github.jeromerobert.pdfarranger.yaml 
+#flatpak --user remote-add --no-gpg-verify pdfarranger-local repo
+#flatpak --user install pdfarranger-local com.github.jeromerobert.pdfarranger
