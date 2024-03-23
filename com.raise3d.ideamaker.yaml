@@ -1,12 +1,13 @@
 id: com.raise3d.ideamaker
-runtime: org.gnome.Platform # maybe switch to freedesktop
+runtime: org.freedesktop.Platform
 
-runtime-version: '45'
+runtime-version: '23.08'
 
-sdk: org.gnome.Sdk
-command: ideamaker
+sdk: org.freedesktop.Sdk
+command: /app/bin/ideamaker/AppRun
 
 finish-args:
+  - --device=dri
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
@@ -18,7 +19,7 @@ modules:
     build-commands:
       - chmod +x ideaMaker*.AppImage
       - ./ideaMaker*.AppImage --appimage-extract
-      - mkdir -p /app/bin/ideamaker
+      - mkdir -p /app/bin/
       - mv squashfs-root /app/bin/ideamaker
     sources:
       - url: https://download.raise3d.com/ideamaker/release/4.3.3/ideaMaker-4.3.3.6560.glibc2.15-x86_64.AppImage
