@@ -14,6 +14,7 @@ finish-args:
   - --filesystem=~/cad # use flatseal or whatever
 
 modules:
+  - shared-modules/glu/glu-9.json
   - name: ideamaker
     buildsystem: simple
     build-commands:

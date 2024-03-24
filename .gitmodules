@@ -1,0 +1,3 @@
+[submodule "shared-modules"]
+	path = shared-modules
+	url = ../../flathub/shared-modules.git
