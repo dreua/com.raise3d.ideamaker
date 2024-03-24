@@ -13,6 +13,7 @@ finish-args:
   - --share=ipc
   - --filesystem=~/cad # use flatseal or whatever
   - --share=network
+  - --persist=.ideamaker
 
 modules:
   - shared-modules/glu/glu-9.json
