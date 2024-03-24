@@ -12,6 +12,7 @@ finish-args:
   - --socket=fallback-x11
   - --share=ipc
   - --filesystem=~/cad # use flatseal or whatever
+  - --share=network
 
 modules:
   - shared-modules/glu/glu-9.json
